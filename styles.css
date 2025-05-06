@@ -177,14 +177,69 @@
     font-weight: 500;
   }
   
-  .about,
   .contact {
     padding: 3rem 2rem;
     background-color: var(--color-light);
     text-align: center;
   }
   
-  .about img,
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  gap: 2rem;
+}
+
+.about-content {
+  flex: 1 1 500px;
+  max-width: 600px;
+}
+
+.about-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+  font-weight: 700;
+}
+
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 2rem;
+}
+
+.about-content strong {
+  color: #000;
+}
+
+.about-content button {
+  background-color: #222;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.about-content button:hover {
+  background-color: #444;
+}
+
+.about img {
+  flex: 1 1 400px;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 1rem;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
   .contact img {
     max-width: 100%;
     margin-top: 2rem;
