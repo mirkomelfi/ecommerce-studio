@@ -18,10 +18,7 @@ document.getElementById("close-cart").addEventListener("click", () => {
 });
 
 document.getElementById("buy-cart").addEventListener("click", () => {
-  console.log(cart)
-  console.log("-----")
-
-
+ 
   if (cart.length === 0) {
     alert("Tu carrito está vacío.");
     return;
@@ -35,7 +32,6 @@ document.getElementById("buy-cart").addEventListener("click", () => {
 
   const orderId = "UF-" + Math.floor(100000 + Math.random() * 900000);
   const total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
-  console.log(total)
 
   const orders = cart.map(item => ({
     name: item.name,
