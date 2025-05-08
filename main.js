@@ -1,5 +1,6 @@
 import { products } from "./products.js";
 
+
 let cart = [];
 
 // Mostrar carrito
@@ -14,6 +15,57 @@ document.getElementById("cart-link").addEventListener("click", (e) => {
 
 document.getElementById("close-cart").addEventListener("click", () => {
   document.getElementById("cart").classList.remove("visible");
+});
+
+document.getElementById("buy-cart").addEventListener("click", () => {
+  console.log(cart)
+  console.log("-----")
+
+
+  if (cart.length === 0) {
+    alert("Tu carrito está vacío.");
+    return;
+  }
+
+  const email = prompt("Ingresá tu email para recibir el resumen:");
+  if (!email || !email.includes("@")) {
+    alert("Email inválido.");
+    return;
+  }
+
+  const orderId = "UF-" + Math.floor(100000 + Math.random() * 900000);
+  const total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+  console.log(total)
+
+  const orders = cart.map(item => ({
+    name: item.name,
+    price: item.price,
+    units: 1 // o la cantidad que desees
+  }));
+  
+
+  const templateParams = {
+    email: email,
+    order_id: orderId,
+    orders: orders,
+    cost: {
+      total: total,
+      tax: 0,
+      shipping: 0
+    }
+  };
+  
+
+  emailjs.send('service_u6toczi', 'template_55h0lxc', templateParams)
+    .then(() => {
+      alert(`Compra registrada. Código: ${orderId}`);
+      cart = [];
+      updateCart();
+    })
+    .catch(err => {
+      console.error("Error EmailJS:", err);
+      alert("Error al enviar email.");
+    });
 });
 
 document.addEventListener("click", (e) => {
